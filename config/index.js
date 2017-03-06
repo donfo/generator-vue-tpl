@@ -1,5 +1,9 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
+var env = require('../env')
+
+var isProduction = (process.env.NODE_ENV === 'production')
+var backendUrl = env.backendUrl || 'http://example.com/'
 
 module.exports = {
   build: {
@@ -13,7 +17,7 @@ module.exports = {
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
-    productionGzip: false,
+    productionGzip: isProduction,
     productionGzipExtensions: ['js', 'css'],
     // Run the build command with an extra argument to
     // View the bundle analyzer report after build finishes:
@@ -23,11 +27,16 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: env.devPort || 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api/**': {
+        target: backendUrl,
+        changeOrigin: true
+      }
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

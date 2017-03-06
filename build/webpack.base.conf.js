@@ -2,12 +2,14 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require('webpack')
+const vuxLoader = require('vux-loader')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-module.exports = {
+let webpackConfig = {
   entry: {
     app: './src/main.js'
   },
@@ -25,18 +27,24 @@ module.exports = {
       resolve('node_modules')
     ],
     alias: {
-      'vue$': 'vue/dist/vue.common.js',
+      // 'vue$': 'vue/dist/vue.common.js',
       'src': resolve('src'),
       'assets': resolve('src/assets'),
-      'components': resolve('src/components')
+      'components': resolve('src/components'),
+      'libs': resolve('src/libs'),
+      'store': resolve('src/store'),
+      'views': resolve('src/views'),
+      'utils': resolve('src/utils'),
+      'moment': 'moment/min/moment.min.js'
     }
   },
   module: {
+    noParse: [/moment/],
     rules: [
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
-        enforce: "pre",
+        enforce: 'pre',
         include: [resolve('src'), resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter')
@@ -50,7 +58,8 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('test')],
+        exclude: [resolve('src/libs')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -69,5 +78,28 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      _: 'lodash/lodash.min.js',
+      Moment: 'moment/min/moment.min.js'
+    })
+  ]
 }
+
+module.exports = vuxLoader.merge(webpackConfig, {
+  options: {},
+  plugins: [
+    {
+      name: 'vux-ui'
+    },
+    {
+      name: 'duplicate-style'
+    },
+    {
+      name: 'less-theme',
+      path: 'src/assets/less/theme.less'
+    }
+  ]
+})
+

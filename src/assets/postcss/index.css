@@ -1,0 +1,12 @@
+:root {
+  --color-main: #ff0;
+}
+#app {
+  font-size: 16px;
+  &:before {
+    content: '';
+    position: absolute;
+    // display: flex;
+    circle: 50px var(--color-main);
+  }
+}
