@@ -87,11 +87,8 @@ export default {
 }
 </script>
 
-<style lang="less">
-@import '~vux/src/styles/reset.less';
-</style>
-
-<style lang="postcss">
+<style src="vux/src/styles/reset.less" lang="less"></style>
+<style>
 @import './assets/postcss/index.css';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

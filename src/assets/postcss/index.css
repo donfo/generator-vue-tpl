@@ -3,10 +3,10 @@
 }
 #app {
   font-size: 16px;
-  &:before {
+  &::before {
     content: '';
     position: absolute;
-    // display: flex;
+    display: flex;
     circle: 50px var(--color-main);
   }
 }

@@ -2,7 +2,8 @@
   <div class="hello">
     <Hello></Hello>
     <group>
-      <cell title="title" value="msg"></cell>
+      <cell title="hello" value="hello" link="hello"></cell>
+      <cell title="user" value="user" link="user"></cell>
     </group>
     <h2>TITLE</h2>
     <x-button type="primary" @click.native="clickToast">点我</x-button>

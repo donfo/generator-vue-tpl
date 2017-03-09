@@ -2,7 +2,6 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
-var webpack = require('webpack')
 const vuxLoader = require('vux-loader')
 
 function resolve (dir) {
@@ -78,13 +77,7 @@ let webpackConfig = {
         }
       }
     ]
-  },
-  plugins: [
-    new webpack.ProvidePlugin({
-      _: 'lodash/lodash.min.js',
-      Moment: 'moment/min/moment.min.js'
-    })
-  ]
+  }
 }
 
 module.exports = vuxLoader.merge(webpackConfig, {

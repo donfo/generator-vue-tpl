@@ -16,11 +16,18 @@ const routes = [
     path: '/hello',
     name: 'Hello',
     component: Hello
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: Hello
   }
 ]
 
 const router = new Router({
-  routes
+  routes,
+  // mode: 'history',
+  base: '/app/'
 })
 
 router.beforeEach(function (to, from, next) {
