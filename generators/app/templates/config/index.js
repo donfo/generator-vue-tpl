@@ -1,6 +1,11 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-var env = require('../env')
+try {
+  var env = require('../env')
+} catch (err) {
+  console.log(error('no env config'))
+  process.exit(1)
+}
 
 var isProduction = (process.env.NODE_ENV === 'production')
 var backendUrl = env.backendUrl || 'http://example.com/'
