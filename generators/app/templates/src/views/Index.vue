@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript">
 import Api from 'api'
 import { Group, Cell, XButton } from 'vux'
 import Hello from 'components/Hello'
@@ -46,10 +46,11 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    Api.getSetting().then(response => {
-      console.log(response)
-      next()
-    })
+    // Api.getSetting().then(response => {
+    //   console.log(response)
+    //   next()
+    // })
+    next()
   }
 }
 </script>

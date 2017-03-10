@@ -1,6 +1,6 @@
 require('./check-versions')()
 
-process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'releasing'
 
 var fs = require('fs')
 var ora = require('ora')
@@ -11,7 +11,7 @@ var webpack = require('webpack')
 var config = require('../config')
 var webpackConfig = require('./webpack.prod.conf')
 
-var spinner = ora('building for production...')
+var spinner = ora('building for release...')
 spinner.start()
 
 var statsConfig = {

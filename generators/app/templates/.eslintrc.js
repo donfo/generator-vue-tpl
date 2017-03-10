@@ -26,12 +26,19 @@ module.exports = {
   },
   'globals': {
     '_': true,
+    'qq': true,
     'wx': true,
+    'router': true,
     'history': true,
+    'location': true,
+    'firstHref': true,
     'localStorage': true,
     'alert': true,
-    'location': true,
     'Moment': true,
-    'firstHref': true
+    'emoji': true,
+    'Image': true,
+    'Decimal': true,
+    'Raven': true,
+    'WeixinJSBridge': true
   }
 }

@@ -4,6 +4,8 @@ var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 const vuxLoader = require('vux-loader')
 
+const isBuild = (process.env.NODE_ENV !== undefined)
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -15,7 +17,7 @@ let webpackConfig = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    publicPath: isBuild
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
@@ -37,6 +39,7 @@ let webpackConfig = {
       'moment': 'moment/min/moment.min.js'
     }
   },
+  externals: isBuild ? {} : {},
   module: {
     noParse: [/moment/],
     rules: [

@@ -7,10 +7,15 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "stats": "webpack-bundle-size-analyzer profile/packStats.json",
+    "build-stats": "webpack-bundle-size-analyzer profile/packStats.json",
+    "build-test": "node build/build-test.js",
+    "build-release": "node build/build-release.js",
+    "build:app1": "node build/build-app1.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
+    "test-flow": "node test/flow/flows/test.js",
+    "test-flow-r": "node test/flow/flows/test.js report",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
@@ -80,7 +85,7 @@
     "postcss-loader": "^1.3.2",
     "postcss-salad": "^1.0.8",
     "rimraf": "^2.6.0",
-    "selenium-server": "^3.0.1",
+    "selenium-server": "^3.3.0",
     "semver": "^5.3.0",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",

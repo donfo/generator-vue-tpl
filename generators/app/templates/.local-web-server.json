@@ -1,0 +1,11 @@
+{
+  "port": 8085,
+  "directory": ".\\dist",
+  "forbid": "*.json",
+  "rewrite": [
+    {
+      "from": "/api/**",
+      "to": "http://example.com/api/$1"
+    }
+  ]
+}

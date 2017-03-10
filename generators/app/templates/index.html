@@ -5,9 +5,28 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui"/>
     <meta content="telephone=no" name="format-detection"/>
-    <title></title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title><%= htmlWebpackPlugin.options.htmlConfig.title %></title>
+    <% if (htmlWebpackPlugin.options.htmlConfig.baiduAnalysis) { %>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?<%= htmlWebpackPlugin.options.htmlConfig.baiduAnalysis %>";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <% } %>
   </head>
   <body>
+    <% if (htmlWebpackPlugin.options.htmlConfig.wxShareImage) { %>
+    <div style="position: relative;overflow: hidden;">
+      <img src="<=% htmlWebpackPlugin.options.htmlConfig.wxShareImage %>" style="top: -1000px; position: absolute;">
+    </div>
+    <% } %>
     <script>
       // 第一次进入页面的链接
       var firstHref = location.href;

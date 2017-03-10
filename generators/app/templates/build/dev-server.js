@@ -27,7 +27,11 @@ var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
-  quiet: true
+  quiet: true,
+  stats: {
+    colors: true,
+    chunks: false
+  }
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
@@ -47,7 +51,13 @@ Object.keys(proxyTable).forEach(function (context) {
   if (typeof options === 'string') {
     options = { target: options }
   }
-  app.use(proxyMiddleware(options.filter || context, options))
+  if (typeof options.filter === 'function') {
+    context = options.filter
+  }
+  if (options.path) {
+    context = options.path
+  }
+  app.use(proxyMiddleware(context, options))
 })
 
 // handle fallback for HTML5 history API

@@ -88,6 +88,7 @@ export default {
 </script>
 
 <style src="vux/src/styles/reset.less" lang="less"></style>
+
 <style>
 @import './assets/postcss/index.css';
 #app {
