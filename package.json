@@ -1,7 +1,7 @@
 {
   "name": "generator-vue-tpl",
   "version": "0.0.2",
-  "description": "A Vue.js project generator for yeoman",
+  "description": "A vue.js project generator for yeoman",
   "homepage": "",
   "author": "donfo <aspzjfa@foxmail.com>",
   "files": [
