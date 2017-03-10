@@ -8,7 +8,6 @@ var path = require('path');
 var optionsConfig = require('./options')
 var promptsConfig = require('./prompts')
 
-
 module.exports = Generator.extend({
   constructor: function () {
     Generator.apply(this, arguments)
@@ -28,7 +27,6 @@ module.exports = Generator.extend({
 
   initializing: function () {
     // this.log('initializing');
-    console.log(this.arguments)
     this.props = {};
   },
 
@@ -71,11 +69,13 @@ module.exports = Generator.extend({
   },
 
   install: function () {
-    this.installDependencies({
-      bower: this.props.bowerInstall,
-      yarn: this.props.yarnInstall,
-      npm: this.props.npmInstall
-    });
+    if (this.props.autoInstall) {
+      this.installDependencies({
+        bower: this.props.bowerInstall,
+        yarn: this.props.yarnInstall,
+        npm: this.props.npmInstall
+      });
+    }
   },
 
   conflicts: function () {
@@ -83,7 +83,7 @@ module.exports = Generator.extend({
   },
 
   end: function () {
-    this.log('Please copy env.example.js as env.js')
+    this.log(chalk.white.bgRed.bold(' Warn  ') + chalk.green.bold('Please copy env.example.js as env.js'))
     // this.log('end');
   },
 
