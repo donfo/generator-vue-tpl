@@ -1,4 +1,4 @@
-# <%= pros.name %>
+# <%= props.name %>
 
 > A Vue.js project
 

@@ -7,6 +7,7 @@ try {
   var env = require('../env')
 } catch (err) {
   console.log(utils.error('no env config'))
+  console.log(chalk.white.bgRed.bold(' Warn ') + ' ' + chalk.green.bold('Please copy env.example.js as env.js'))
   process.exit(1)
 }
 

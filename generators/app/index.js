@@ -27,7 +27,7 @@ module.exports = Generator.extend({
 
   initializing: function () {
     // this.log('initializing');
-    this.props = {};
+    this.props = this.config.get('props');
   },
 
   prompting: function () {
@@ -49,6 +49,7 @@ module.exports = Generator.extend({
 
   configuring: function () {
     // this.log('configuring');
+    this.config.set('props', this.props);
     this.config.save();
   },
 
@@ -78,7 +79,7 @@ module.exports = Generator.extend({
     this._copyTpl('.postcssrc.js', '.postcssrc.jse')
     this._copyTpl('_package.json', 'package.json')
     this._copyTpl('env.example.js', 'env.example.js')
-    this._copyTpl('index.html', 'index.html')
+    this._copy('index.html', 'index.html')
     this._copyTpl('README.md', 'README.md')
   },
 
