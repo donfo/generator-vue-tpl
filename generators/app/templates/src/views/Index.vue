@@ -10,8 +10,8 @@
   </div>
 </template>
 
-<script type="text/ecmascript">
-import Api from 'api'
+<script>
+// import Api from 'api'
 import { Group, Cell, XButton } from 'vux'
 import Hello from 'components/Hello'
 

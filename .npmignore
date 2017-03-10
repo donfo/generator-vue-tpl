@@ -6,5 +6,3 @@ npm-debug.log
 yarn-error.log**
 
 .gitignore
-
-generators/app/templates/package.json
