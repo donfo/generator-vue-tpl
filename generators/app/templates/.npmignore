@@ -1,5 +1,6 @@
 .DS_Store
 .idea
+.gitignore
 
 node_modules
 npm-debug.log
@@ -13,5 +14,4 @@ profile/
 
 env.js
 package.json
-
 

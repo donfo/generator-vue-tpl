@@ -64,8 +64,22 @@ module.exports = Generator.extend({
   },
 
   writing: function () {
-    this._copyTpl('**', '')
-    this._copyTpl('.*', '')
+    this._copy('build/**', 'build')
+    this._copy('config/**', 'config')
+    this._copy('src/**', 'src')
+    this._copy('static/**', 'static')
+    this._copy('test/**', 'test')
+    this._copyTpl('.babelrc', '.babelrc')
+    this._copyTpl('.editorconfig', '.editorconfig')
+    this._copyTpl('.eslintignore', '.eslintignore')
+    this._copyTpl('.eslintrc.js', '.eslintrc.js')
+    this._copyTpl('.gitignore', '.gitignore')
+    this._copyTpl('.npmignore', '.npmignore')
+    this._copyTpl('.postcssrc.js', '.postcssrc.jse')
+    this._copyTpl('_package.json', 'package.json')
+    this._copyTpl('env.example.js', 'env.example.js')
+    this._copyTpl('index.html', 'index.html')
+    this._copyTpl('README.md', 'README.md')
   },
 
   install: function () {
@@ -83,7 +97,7 @@ module.exports = Generator.extend({
   },
 
   end: function () {
-    this.log(chalk.white.bgRed.bold(' Warn  ') + chalk.green.bold('Please copy env.example.js as env.js'))
+    this.log(chalk.white.bgRed.bold(' Warn ') + ' ' + chalk.green.bold('Please copy env.example.js as env.js'))
     // this.log('end');
   },
 

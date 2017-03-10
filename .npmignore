@@ -5,3 +5,5 @@ coverage
 npm-debug.log
 
 .gitignore
+
+generators/app/templates/package.json
