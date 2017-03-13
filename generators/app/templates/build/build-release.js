@@ -43,13 +43,12 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     process.stdout.write(stats.toString(statsConfig) + '\n\n')
 
     if (config.build.packStats) {
-      fs.writeFileSync(config.build.packStats, JSON.stringify(stats.toJson(statsConfig)))
+      fs.writeFileSync(config.build.packStats, JSON.stringify(stats.toJson()))
     }
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(
       '  Tip: built files are meant to be served over an HTTP server.\n' +
       '  Opening index.html over file:// won\'t work.\n'
     ))
-    process.exit(0)
   })
 })

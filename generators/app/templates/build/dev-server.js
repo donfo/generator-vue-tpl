@@ -78,7 +78,7 @@ app.use(staticPath, express.static('./static'))
 var uri = 'http://localhost:' + port
 
 devMiddleware.waitUntilValid(function () {
-  console.log('> Listening at ' + chalk.bgGreen.underline(uri) + '\n')
+  console.log('> Listening at ' + chalk.underline.bgGreen.white(uri) + '\n')
 })
 
 module.exports = app.listen(port, function (err) {
