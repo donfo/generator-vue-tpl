@@ -1,4 +1,4 @@
-// http://eslint.org/docs/user-guide/configuring
+  // http://eslint.org/docs/user-guide/configuring
 
 module.exports = {
   root: true,
@@ -22,7 +22,9 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    // allow Template Literals
+    'quotes': ["error", "single", {"allowTemplateLiterals": true}]
   },
   'globals': {
     '_': true,
