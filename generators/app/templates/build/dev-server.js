@@ -1,4 +1,5 @@
 require('./check-versions')()
+var chalk = require('chalk')
 
 var config = require('../config')
 if (!process.env.NODE_ENV) {
@@ -77,7 +78,7 @@ app.use(staticPath, express.static('./static'))
 var uri = 'http://localhost:' + port
 
 devMiddleware.waitUntilValid(function () {
-  console.log('> Listening at ' + uri + '\n')
+  console.log('> Listening at ' + chalk.bgGreen.underline(uri) + '\n')
 })
 
 module.exports = app.listen(port, function (err) {

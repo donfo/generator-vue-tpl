@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style rel="stylesheet/scss">
 h1, h2 {
   font-weight: normal;
   &:before {

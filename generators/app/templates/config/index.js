@@ -36,7 +36,8 @@ module.exports = {
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
     htmlConfig: {
-      title: 'test'
+      title: 'test',
+      firstHref: true
     }
   }
 }

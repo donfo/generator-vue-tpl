@@ -27,10 +27,27 @@
       <img src="<=% htmlWebpackPlugin.options.htmlConfig.wxShareImage %>" style="top: -1000px; position: absolute;">
     </div>
     <% } %>
+    <% if (htmlWebpackPlugin.options.htmlConfig.firstHref) { %>
     <script>
       // 第一次进入页面的链接
       var firstHref = location.href;
     </script>
+    <% } %>
+    <% if (typeof htmlWebpackPlugin.options.htmlConfig.htmlFontSize === 'number') { %>
+    <script>
+      // 基线字体设置
+      var htmlFontSize = <%= htmlWebpackPlugin.options.htmlConfig.htmlFontSize %>
+      document.body.parentNode.style.fontSize = htmlFontSize + 'px';
+      window.htmlFontSize = htmlFontSize
+    </script>
+    <% } else if (htmlWebpackPlugin.options.htmlConfig.htmlFontSize === true) { %>
+    <script>
+      // 基线字体设置
+      var htmlFontSize = (document.documentElement.clientWidth) / 375 * 50
+      document.body.parentNode.style.fontSize = htmlFontSize + 'px';
+      window.htmlFontSize = htmlFontSize
+    </script>
+    <% } %>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
