@@ -1,8 +1,8 @@
 {
   "name": "<%= props.name %>",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "donfo <aspzjfa@foxmail.com>",
+  "version": "<%= props.version %>",
+  "description": "<%= props.description %>",
+  "author": "<%= props.author %>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

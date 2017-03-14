@@ -1,48 +1,41 @@
-var utils = require('../utils')
-var path = require('path')
+const utils = require('../utils')
+const path = require('path')
 
-var needInstall = function (answers) {
-  return answers.autoInstall;
-}
-
-module.exports = function (self) {
+module.exports = self => {
   return [
     {
-      when: function () {
-        return !(self.arguments && self.arguments[0] && self.arguments[0].length)
+      when: () => {
+        return !self.options.name
       },
       type: String,
       name: 'name',
       message: 'your project name',
-      default: utils.makeProjectName(path.basename(process.cwd())),
-      filter: utils.makeProjectName
+      default: 'new-project'
     },
     {
-      type: 'confirm',
-      name: 'autoInstall',
-      message: 'need auto install after generator?',
-      default: false
+      type: 'input',
+      name: 'version',
+      message: 'Project version:',
+      default: '1.0.0'
     },
     {
-      when: needInstall,
-      type: 'confirm',
-      name: 'yarnInstall',
-      message: '> auto install with yarn?',
-      default: true
+      type: 'input',
+      name: 'description',
+      message: 'Project description:',
+      default: 'A Vue.js project'
     },
     {
-      when: needInstall,
-      type: 'confirm',
-      name: 'npmInstall',
-      message: '> auto install with npm?',
-      default: true
+      type: 'input',
+      name: 'author',
+      message: 'Author name:',
+      default: ''
     },
     {
-      when: needInstall,
-      type: 'confirm',
-      name: 'bowerInstall',
-      message: '> auto install with bower?',
-      default: false
+      type: 'list',
+      name: 'install',
+      message: 'What install do you need:',
+      choices: ['yarn', 'npm', 'bower', 'Don\'t need to be installed automatically'],
+      default: 0
     }
   ]
 }
