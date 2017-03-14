@@ -2,10 +2,10 @@ var path = require('path');
 var express = require('express');
 var app = express();
 
-process.env.NODE_ENV = 'testing'
+process.env.NODE_ENV = 'testing';
 var config = require('../../../config/index');
 
-const RESULT_PATH = path.join(__dirname, '../flow-test-results')
+const RESULT_PATH = path.join(__dirname, '../flow-test-results');
 
 var showReport;
 var filterTest;
@@ -32,14 +32,17 @@ process.argv.forEach(function(arg, i){
 	}
 });
 
-// var flow = require('phantomflow').init({
-var flow = require('E:\\02Project\\MyGitHub\\PhantomFlow').init({
+var flow = require('phantomflow').init({
+// var flow = require('E:/01wangmeng/phantomflow/phantomflow').init({
+// var flow = require('E:\\02Project\\MyGitHub\\PhantomFlow\\phantomflow.js').init({
 	//earlyexit: true, // abort as soon as a test fails (also prevents report creation)
 	debug: debugMode ? 2 : undefined,
-	createReport: true,
-	test: filterTest,
+	includes: null,
+  skipVisualTests: false,
+  test: filterTest,
 	remoteDebug: remoteDebug,
 	dashboard: dashboard,
+	createReport: true,
 	results: path.resolve(RESULT_PATH)
 });
 
