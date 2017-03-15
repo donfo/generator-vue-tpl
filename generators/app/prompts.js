@@ -31,11 +31,21 @@ module.exports = self => {
       default: ''
     },
     {
-      type: 'list',
+      type: 'checkbox',
       name: 'install',
       message: 'What install do you need:',
-      choices: ['yarn', 'npm', 'bower', 'Don\'t need to be installed automatically'],
-      default: 0
+      choices: [
+        {
+          name: 'yarn',
+          checked: true
+        },
+        {
+          name: 'npm'
+        },
+        {
+          name: 'bower'
+        }
+      ]
     }
   ]
 }

@@ -64,7 +64,7 @@ module.exports = class extends Generator {
     this._copyTpl('.eslintrc.js', '.eslintrc.js')
     this._copyTpl('.gitignore', '.gitignore')
     this._copyTpl('.npmignore', '.npmignore')
-    this._copyTpl('.postcssrc.js', '.postcssrc.jse')
+    this._copyTpl('.postcssrc.js', '.postcssrc.js')
     this._copyTpl('_package.json', 'package.json')
     this._copyTpl('env.example.js', 'env.example.js')
     this._copy('index.html', 'index.html')
@@ -72,11 +72,11 @@ module.exports = class extends Generator {
   }
 
   install () {
-    if (this.props.install !== 'Don\'t need to be installed automatically') {
+    if (this.props.install && this.props.install.length) {
       this.installDependencies({
-        yarn: this.props.install === 'yarn',
-        npm: this.props.install === 'npm',
-        bower: this.props.install === 'bower'
+        yarn: this.props.install.indexOf('yarn') !== -1,
+        npm: this.props.install.indexOf('npm') !== -1,
+        bower: this.props.install.indexOf('bower') !== -1
       })
     }
   }

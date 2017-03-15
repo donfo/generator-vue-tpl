@@ -1,18 +1,18 @@
-'use strict';
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
+'use strict'
+const path = require('path')
+const assert = require('yeoman-assert')
+const helpers = require('yeoman-test')
 
-describe('generator-nodejs-bin:app', function () {
-  before(function () {
+describe('generator-nodejs-bin:app', () => {
+  before(() => {
     return helpers.run(path.join(__dirname, '../generators/app'))
     .withArguments(['name-x'])
-    .toPromise();
-  });
+    .toPromise()
+  })
 
-  it('creates files', function () {
+  it('creates files', () => {
     assert.file([
       'package.json'
-    ]);
-  });
-});
+    ])
+  })
+})
