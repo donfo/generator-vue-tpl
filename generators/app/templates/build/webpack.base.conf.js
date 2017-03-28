@@ -28,6 +28,7 @@ let webpackConfig = {
       resolve('node_modules')
     ],
     alias: {
+      '@': resolve('src'),
       // 'vue$': 'vue/dist/vue.common.js',
       'src': resolve('src'),
       'assets': resolve('src/assets'),

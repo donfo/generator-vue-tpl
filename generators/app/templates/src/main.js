@@ -13,6 +13,8 @@ FastClick.attach(document.body)
 import vueExtend from './vue-extend'
 vueExtend(Vue)
 
+Vue.config.productionTip = false
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
