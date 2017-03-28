@@ -1,6 +1,6 @@
 # <%= props.name %>
 
-> A Vue.js project
+> <%= props.description %>
 
 ## 使用
 
@@ -25,4 +25,4 @@ npm run build
 
 ## TODO
 
-+ 1
++ 测试依赖及文件可选

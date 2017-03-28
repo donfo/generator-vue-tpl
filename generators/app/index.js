@@ -22,12 +22,12 @@ module.exports = class extends Generator {
   }
 
   initializing () {
-    this.props = this.config.get('props')
+    this.savedProps = this.config.get('props')
   }
 
   prompting () {
     this.log(yosay(
-      'Welcome to the fantabulous ' + chalk.red('generator-vue-tpl') + ' generator!'
+      'Welcome to the ' + chalk.red('generator-vue-tpl') + ' generator!'
     ))
     const prompts = promptsConfig(this)
     return this.prompt(prompts).then(answers => {

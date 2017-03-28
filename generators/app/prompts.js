@@ -16,7 +16,7 @@ module.exports = self => {
       type: 'input',
       name: 'version',
       message: 'Project version:',
-      default: '1.0.0'
+      default: self.savedProps.version
     },
     {
       type: 'input',
@@ -28,7 +28,7 @@ module.exports = self => {
       type: 'input',
       name: 'author',
       message: 'Author name:',
-      default: ''
+      default: self.savedProps.author
     },
     {
       type: 'checkbox',
@@ -45,7 +45,8 @@ module.exports = self => {
         {
           name: 'bower'
         }
-      ]
+      ],
+      default: self.savedProps.install
     }
   ]
 }
