@@ -16,6 +16,10 @@ Then generate your new project:
 yo vue-tpl [options] [<name>]
 ```
 
+## Release
+
++ 0.1.5 update to vue 2.3.3
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
