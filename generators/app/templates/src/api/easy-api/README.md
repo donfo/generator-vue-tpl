@@ -8,8 +8,8 @@
 
 ## 改进
 
-http-token包含内容太多，需要压缩
-将data处理为可选参数
++ http-token包含内容太多，需要压缩
++ 将data处理为可选参数
 
 ## 示例
 
@@ -18,21 +18,20 @@ http-token包含内容太多，需要压缩
 import EasyApi from './libs/easy-api/index'
 import preInterceptors from './libs/easy-api/interceptors/pre/index'
 import logger from './libs/easy-api/interceptors/logger'
-const EA = new EasyApi()
+const ea = new EasyApi()
 
-EA.interceptor((httpOptions, response, resolve, reject, options) => {
+ea.interceptor((httpOptions, response, resolve, reject, options) => {
   response.test = 'a'
   resolve(response)
 })
-EA.interceptor(logger)
-EA.pre(preInterceptors({ boolUrlify: true, arrayToCvs: true }))
+ea.interceptor(logger)
+ea.pre(preInterceptors({ boolUrlify: true, arrayToCvs: true }))
 ```
 
 + 局部
 ```javascript
 function getData (urlOption, query, options, httpOptions = {}) {
-  options = options || thOptions
-  return EA.call('get', `/api/data/${urlOption.id}/subordinates`, { params: query }, options)
+  return ea.call('get', `/api/data/${urlOption.id}/subordinates`, { params: query }, options)
 }
   
 getData({ departmentId: this.departmentId }, { 'p1 | bool': true, 'p2 | array': [1, 2] }, { loading: true }).then((data) => {
