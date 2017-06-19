@@ -19,6 +19,7 @@ yo vue-tpl [options] [<name>]
 ## Release
 
 + 0.1.5 update to vue 2.3.3
++ 0.1.6 update package.json of template
 
 ## Getting To Know Yeoman
 
