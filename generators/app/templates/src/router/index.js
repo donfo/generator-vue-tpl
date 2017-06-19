@@ -35,8 +35,9 @@ router.beforeEach(function (to, from, next) {
   next()
 })
 
-router.afterEach(function (to) {
+router.afterEach(function (to, from, next) {
   store.commit('loading', { show: false })
+  next()
 })
 
 export default router
