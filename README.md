@@ -20,6 +20,7 @@ yo vue-tpl [options] [<name>]
 
 + 0.1.5 update to vue 2.3.3
 + 0.1.6 update package.json of template
++ 0.1.6 add profile/ to template
 
 ## Getting To Know Yeoman
 
