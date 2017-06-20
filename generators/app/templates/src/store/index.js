@@ -21,7 +21,7 @@ const store = new Vuex.Store({
   plugins: debug ? [createLogger()] : []
 })
 
-const storeModule = {
+const storeModules = {
   loading: {
     show: false,
     title: '加载中',
@@ -64,6 +64,7 @@ const storeModule = {
   }
 }
 
+<<<<<<< HEAD
 const defaultShow = (payload) => {
   if (typeof payload === 'boolean') {
     payload = { show: payload }
@@ -73,9 +74,9 @@ const defaultShow = (payload) => {
   return payload !== undefined && Object.keys(payload).length > 0 ? Object.assign({ show: true }, payload) : {}
 }
 
-Object.keys(storeModule).forEach(k => {
+Object.keys(storeModules).forEach(k => {
   store.registerModule(k, {
-    state: storeModule[k],
+    state: storeModules[k],
     mutations: {
       [k] (state, payload) {
         payload = defaultShow(payload)

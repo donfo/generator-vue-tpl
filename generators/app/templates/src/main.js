@@ -5,8 +5,14 @@ import App from './App'
 import store from './store'
 import router from './router'
 
-import FastClick from 'libs/fastclick'
-FastClick.attach(document.body)
+import installStyles from './install-styles'
+installStyles()
+
+import installCommonLibs from './install-common-libs'
+installCommonLibs(Vue)
+
+import installCommonUtils from './install-common-utils'
+installCommonUtils(Vue)
 
 import vueExtend from './vue-extend'
 vueExtend(Vue)
@@ -18,5 +24,5 @@ new Vue({
   el: '#app',
   store,
   router,
-  render: h => h(App)
+  render: createElement => createElement(App)
 })
