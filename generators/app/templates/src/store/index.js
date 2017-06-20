@@ -24,7 +24,7 @@ const store = new Vuex.Store({
 const storeModule = {
   loading: {
     show: false,
-    text: '加载中',
+    title: '加载中',
     full: false,
     position: 'fixed'
   },
@@ -34,7 +34,7 @@ const storeModule = {
     time: 2000,
     width: '7.6em',
     isShowMask: false,
-    text: '',
+    title: '',
     onShow: () => {},
     onHide: () => {}
   },
@@ -64,15 +64,28 @@ const storeModule = {
   }
 }
 
+const defaultShow = (payload) => {
+  if (typeof payload === 'boolean') {
+    payload = { show: payload }
+  } else if (typeof payload === 'string') {
+    payload = { title: payload }
+  }
+  return payload !== undefined && Object.keys(payload).length > 0 ? Object.assign({ show: true }, payload) : {}
+}
+
 Object.keys(storeModule).forEach(k => {
   store.registerModule(k, {
     state: storeModule[k],
     mutations: {
       [k] (state, payload) {
+        payload = defaultShow(payload)
         Object.keys(payload).forEach(k => {
           state[k] = payload[k]
         })
       }
+    },
+    getters: {
+      [k]: state => state
     }
   })
 })

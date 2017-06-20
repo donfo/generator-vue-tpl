@@ -3,7 +3,7 @@
     <router-view></router-view>
     <loading v-model="loadingXp.show"
       :position="loadingXp.position"
-      :text="loadingXp.text"
+      :text="loadingXp.title"
       :class="{full: loadingXp.full}">
     </loading>
     <toast v-model="toastXpShow"
@@ -11,7 +11,7 @@
       :time="toastXp.time"
       :width="toastXp.width"
       :is-show-mask="toastXp.isShowMask"
-      :text="toastXp.text"
+      :text="toastXp.title"
       @on-show="toastXp.onShow"
       @on-hide="toastXp.onHide">
     </toast>
@@ -42,7 +42,7 @@
 
 <script>
 import { Loading, Toast, Alert, Confirm } from 'vux'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'app',
@@ -53,11 +53,11 @@ export default {
     Confirm
   },
   computed: {
-    ...mapState({
-      loadingXp: state => state.loading,
-      toastXp: state => state.toast,
-      alertXp: state => state.alert,
-      confirmXp: state => state.confirm
+    ...mapGetters({
+      loadingXp: 'loading',
+      toastXp: 'toast',
+      alertXp: 'alert',
+      confirmXp: 'confirm'
     }),
     toastXpShow: {
       get () {

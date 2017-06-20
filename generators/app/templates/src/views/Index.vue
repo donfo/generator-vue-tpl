@@ -30,7 +30,7 @@ export default {
   methods: {
     clickToast () {
       this.toast({
-        text: 'aaaa',
+        title: 'aaaa',
         onHide: () => {
           this.alert({
             title: 'bbbb',
@@ -50,7 +50,9 @@ export default {
     //   console.log(response)
     //   next()
     // })
-    next()
+    setTimeout(() => {
+      next()
+    }, 1000)
   }
 }
 </script>
