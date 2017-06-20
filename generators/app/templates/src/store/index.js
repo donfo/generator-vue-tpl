@@ -64,7 +64,6 @@ const storeModules = {
   }
 }
 
-<<<<<<< HEAD
 const defaultShow = (payload) => {
   if (typeof payload === 'boolean') {
     payload = { show: payload }

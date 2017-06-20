@@ -1,8 +1,8 @@
 export default function (Vue) {
   // 开发过程需要的
   if (!process.env.IS_BUILD) {
-    const installDevUtils = require('./utils/_self/devUtils')
-    installDevUtils()
+    // const installDevUtils = require('./utils/_self/devUtils')
+    // installDevUtils()
     // var startMockServer = require('./api/mock/index')
     // startMockServer()
   } else if (process.env.env === 'production') {
