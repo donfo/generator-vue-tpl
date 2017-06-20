@@ -58,6 +58,7 @@ module.exports = class extends Generator {
     this._copy('src/**', 'src')
     this._copy('static/**', 'static')
     this._copy('test/**', 'test')
+    this._copy('profile/.gitkeep', 'profile')
     this._copyTpl('.babelrc', '.babelrc')
     this._copyTpl('.editorconfig', '.editorconfig')
     this._copyTpl('.eslintignore', '.eslintignore')
