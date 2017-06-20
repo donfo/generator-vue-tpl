@@ -21,7 +21,7 @@ const store = new Vuex.Store({
   plugins: debug ? [createLogger()] : []
 })
 
-const storeModule = {
+const storeModules = {
   loading: {
     show: false,
     text: '加载中',
@@ -64,9 +64,9 @@ const storeModule = {
   }
 }
 
-Object.keys(storeModule).forEach(k => {
+Object.keys(storeModules).forEach(k => {
   store.registerModule(k, {
-    state: storeModule[k],
+    state: storeModules[k],
     mutations: {
       [k] (state, payload) {
         Object.keys(payload).forEach(k => {
