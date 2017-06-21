@@ -12,7 +12,7 @@ test/flow/flow-test-results/
 test/visuals/
 dist/
 dist-test/
-profile/
+pack-stats.json
 
 env.js
 

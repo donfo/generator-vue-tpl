@@ -16,7 +16,7 @@ module.exports = (function () {
         // npm install --save-dev compression-webpack-plugin
         productionGzip: true,
         productionGzipExtensions: ['js', 'css'],
-        packStats: path.resolve(__dirname, '../profile/packStats.json'),
+        packStats: path.resolve(__dirname, '../pack-stats.json'),
         // Run the build command with an extra argument to
         // View the bundle analyzer report after build finishes:
         // `npm run build --report`
@@ -38,6 +38,7 @@ module.exports = (function () {
         productionSourceMap: true,
         productionGzip: true,
         productionGzipExtensions: ['js', 'css'],
+        packStats: path.resolve(__dirname, '../pack-stats.json'),
         bundleAnalyzerReport: process.env.npm_config_report,
         htmlConfig: {
           title: 'test'
@@ -54,6 +55,7 @@ module.exports = (function () {
         productionSourceMap: true,
         productionGzip: true,
         productionGzipExtensions: ['js', 'css'],
+        packStats: path.resolve(__dirname, '../pack-stats.json'),
         bundleAnalyzerReport: process.env.npm_config_report,
         htmlConfig: {
           title: 'test'
@@ -70,6 +72,7 @@ module.exports = (function () {
         productionSourceMap: true,
         productionGzip: true,
         productionGzipExtensions: ['js', 'css'],
+        packStats: path.resolve(__dirname, '../pack-stats.json'),
         bundleAnalyzerReport: process.env.npm_config_report
       }
   }

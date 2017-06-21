@@ -1,6 +1,5 @@
 .DS_Store
 .idea/
-.gitignore
 
 node_modules/
 npm-debug.log**
@@ -13,7 +12,7 @@ test/flow/flow-test-results/
 test/visuals/
 dist/
 dist-test/
-profile/
+pack-stats.json
 
 env.js
 
