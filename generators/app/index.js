@@ -62,7 +62,7 @@ module.exports = class extends Generator {
     this._copyTpl('.editorconfig', '.editorconfig')
     this._copyTpl('.eslintignore', '.eslintignore')
     this._copyTpl('.eslintrc.js', '.eslintrc.js')
-    this._copyTpl('.gitignore', '.gitignore')
+    this._copyTpl('_gitignore', '.gitignore')
     this._copyTpl('.npmignore', '.npmignore')
     this._copyTpl('.postcssrc.js', '.postcssrc.js')
     this._copyTpl('_package.json', 'package.json')

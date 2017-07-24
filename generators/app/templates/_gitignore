@@ -1,0 +1,21 @@
+.DS_Store
+.idea/
+
+node_modules/
+npm-debug.log**
+yarn-error.log**
+selenium-debug.log**
+
+test/unit/coverage/
+test/e2e/reports/
+test/flow/flow-test-results/
+test/visuals/
+dist/
+dist-test/
+pack-stats.json
+
+env.js
+
+# .npmignore files follow the same pattern rules as .gitignore files; see https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package
+# If you want included some path back, use !; see https://git-scm.com/docs/gitignore
+
