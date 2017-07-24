@@ -22,7 +22,7 @@ yo vue-tpl [options] [<name>]
 + 0.1.6 update package.json of template
 + 0.1.6 add profile/ to template
 + 0.1.8 update
-+ 0.2.0 
++ 0.2.0 update dependencies to vue 2.3
 
 ## Getting To Know Yeoman
 

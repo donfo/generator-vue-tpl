@@ -4,7 +4,8 @@ var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 const vuxLoader = require('vux-loader')
 
-const isBuild = (process.env.NODE_ENV !== undefined)
+const isBuild = (['production', 'testing', 'releasing'].indexOf(process.env.NODE_ENV) > -1)
+console.log(`isBuild=${isBuild} in webpack base config`)
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
