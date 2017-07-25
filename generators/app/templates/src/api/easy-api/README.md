@@ -13,12 +13,21 @@
 
 ## 示例
 
-+ 全局
++ 全局初始化实例
+
+> 由于相同项目对接口的处理要求应该相同，所以一般情况全局初始化一个EasyApi实例
+
 ```javascript
 import EasyApi from './libs/easy-api/index'
 import preInterceptors from './libs/easy-api/interceptors/pre/index'
 import logger from './libs/easy-api/interceptors/logger'
-const ea = new EasyApi()
+const ea = new EasyApi({
+  loadingFunc: ...,
+  noErrorHandler: false,
+  httpErrorHandler: (index, options) => {},
+  httpErrorHandlerOptions: () => {},
+})
+window.ea = ea
 
 ea.interceptor((httpOptions, response, resolve, reject, options) => {
   response.test = 'a'
@@ -28,7 +37,7 @@ ea.interceptor(logger)
 ea.pre(preInterceptors({ boolUrlify: true, arrayToCvs: true }))
 ```
 
-+ 局部
++ 需要处调用
 ```javascript
 function getData (urlOption, query, options, httpOptions = {}) {
   return ea.call('get', `/api/data/${urlOption.id}/subordinates`, { params: query }, options)

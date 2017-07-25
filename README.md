@@ -24,6 +24,7 @@ yo vue-tpl [options] [<name>]
 + 0.1.8 update
 + 0.2.0 update dependencies to vue 2.3
 + 0.2.3 bug fix for build
++ 0.3.0 easy-api libs update
 
 ## Getting To Know Yeoman
 

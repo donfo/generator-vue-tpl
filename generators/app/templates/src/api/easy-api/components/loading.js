@@ -1,5 +1,5 @@
-import { appLoading } from '../../../utils/..'  // 还没有
 import * as utils from '../utils'
+const appLoading = utils.noop()
 
 export default function (options) {
   if (options.loading) {

@@ -30,65 +30,82 @@ export default class EasyApi {
   }
 
   pre (func, index) {
-    if (typeof index !== 'undefined') {
-      this.preInterceptors.splice(index, 0, func)
+    if (typeof func === 'undefined') {
+      return this.preInterceptors
+    }
+    if (typeof index === 'undefined') {
+      this.preInterceptors.push(func)
+      return
     }
 
-    this.preInterceptors.push(func)
+    this.preInterceptors.splice(index, 0, func)
   }
 
   interceptor (func, index) {
-    if (typeof index !== 'undefined') {
-      this.interceptors.splice(index, 0, func)
+    if (typeof func === 'undefined') {
+      return this.interceptors
+    }
+    if (typeof index === 'undefined') {
+      this.interceptors.push(func)
+      return
     }
 
-    this.interceptors.push(func)
+    this.interceptors.splice(index, 0, func)
+  }
+
+  getPreInterceptorsRunner (preInterceptors, axiosConfig, options) {
+    return () => {
+      let promisifiedPreInterceptors = preInterceptors.map((interceptor) => {
+        return utils.promisifyPreInterceptor(interceptor, axiosConfig, options)
+      })
+
+      let gen = function* () {
+        for (let i = 0, len = promisifiedPreInterceptors.length; i < len; i++) {
+          yield promisifiedPreInterceptors[i]
+        }
+      }
+
+      return co(gen).then(() => {
+        return Promise.resolve()
+      })
+    }
+  }
+
+  getInterceptorsRunner (interceptors, axiosConfig, options) {
+    return (response) => {
+      let promisifiedInterceptors = interceptors.map((interceptor) => {
+        return utils.promisifyInterceptor(interceptor, axiosConfig, response, options)
+      })
+
+      let gen = function* () {
+        for (let i = 0, len = promisifiedInterceptors.length; i < len; i++) {
+          yield promisifiedInterceptors[i]
+        }
+      }
+
+      return co(gen).then(() => {
+        return Promise.resolve(response)
+      })
+    }
   }
 
   // method, url, [httpOptions], [options]
   call (method, url, httpOptions, options = {}) {
-    let loading = this.selfOptions.loadingFunc || loadingFunc(options)
+    options = Object(this.selfOptions, options)
+    let loading = options.loadingFunc || loadingFunc(options)
 
     let request
     let force = options.force || false
     let httpPattern = utils.makeHttpPattern(method, url, httpOptions, options)
     let index = this.throttleList.indexOf(httpPattern)
     let notPending = (index === -1)
-    let axiosConfig = Object.assign(this.selfOptions.defaultAxiosConfig, { method, url }, httpOptions)
+    let axiosConfig = Object.assign(options.defaultAxiosConfig, { method, url }, httpOptions)
 
     const makeHttpPromise = (request) => {
       loading(true)
       return new Promise((resolve, reject) => {
-        let runPreInterceptors = () => {
-          let promisifiedPreInterceptors = this.preInterceptors.map((interceptor) => {
-            return utils.promisifyPreInterceptor(interceptor, axiosConfig, options)
-          })
-
-          let gen = function* () {
-            for (let i = 0, len = promisifiedPreInterceptors.length; i < len; i++) {
-              yield promisifiedPreInterceptors[i]
-            }
-          }
-
-          return co(gen).then(() => {
-            return Promise.resolve()
-          })
-        }
-        let runInterceptors = (response) => {
-          let promisifiedInterceptors = this.interceptors.map((interceptor) => {
-            return utils.promisifyInterceptor(interceptor, axiosConfig, response, options)
-          })
-
-          let gen = function* () {
-            for (let i = 0, len = promisifiedInterceptors.length; i < len; i++) {
-              yield promisifiedInterceptors[i]
-            }
-          }
-
-          return co(gen).then(() => {
-            return Promise.resolve(response)
-          })
-        }
+        let runPreInterceptors = this.getPreInterceptorsRunner(this.preInterceptors, axiosConfig, options)
+        let runInterceptors = this.getInterceptorsRunner(this.interceptors, axiosConfig, options)
         let handleSuccess = (response) => {
           request.status = 'success'
           resolve(response)
@@ -100,9 +117,9 @@ export default class EasyApi {
           loading(false)
         }
 
-        runPreInterceptors().then(() => {
-          axios(axiosConfig).then((response) => {
-            runInterceptors(response).then(handleSuccess)
+        return runPreInterceptors().then(() => {
+          return axios(axiosConfig).then((response) => {
+            return runInterceptors(response).then(handleSuccess)
           }).catch(handleFail)
         })
       })

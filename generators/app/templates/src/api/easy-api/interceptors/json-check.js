@@ -3,7 +3,7 @@ function validJSON (response) {
 }
 
 export default function (httpOptions, response, resolve, reject, options) {
-  let acceptNotJSON = options.acceptNotJSON || false
+  let acceptNotJSON = options && options.acceptNotJSON || false
 
   if (!acceptNotJSON) {
     if (validJSON(response)) {

@@ -1,4 +1,5 @@
-import { defaultXhrErrorHandler } from '../../../utils/...' // 还没有
+import * as utils from '../utils'
+const defaultXhrErrorHandler = utils.noop()
 
 export default function (httpOptions, response, resolve, reject, options) {
   let noErrorHandler = options.noErrorHandler
